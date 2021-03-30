@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <div *ngIf="check === false">
+        <div class="col-12"></div>
+    
+        <form [formGroup]="filmForm">
+            <p>Title</p> <input type="text" placeholder="Title" formControlName="title">
+
+            <p>Release_years</p> <input type="text" placeholder="Release Years" formControlName="releaseYear">
+                <p class="divider"></p>
+                <button class="btn btn-info" (click)="search()">Search</button>
+                <!-- <button class="btn btn-info" (click)="SaveExcel()">SaveExcel</button> -->
+
+        </form>
+
+        <div class="col-9">
+        </div>
+        <div class="col-*9">
+            <table class="table text-lg-center">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Length</th> 
+                    <th>ReleaseYear</th>
+                    <th>Rating</th>
+                   
+                </tr>
+                <tr *ngFor="let getSearch of getFilms">
+                    <td>
+                        {{getSearch.filmId}}
+                    </td>
+                    <td>
+                        {{getSearch.title}}
+                    </td>
+                    <td>
+                        {{getSearch.description}}
+                    </td>
+                    <td>
+                        {{getSearch.length}}
+                    </td>
+                    <td>
+                        {{getSearch.releaseYear}}
+                    </td>
+                    <td>
+                        {{getSearch.rating}}
+                    </td>
+                    
+                    <td>
+                        <button class="btn btn-info" (click)="search1(getSearch.filmId,getSearch.title)">SHOW</button>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div *ngIf="check === true" >
+        <div class="col-3">
+            <button class="btn btn-info" (click)="back()">Back</button>
+        </div>
+        <div class="col-6">
+            <H1>{{name}}</H1>
+            <!-- <button class="btn btn-info" (click)="exportActor()">Export Data</button> -->
+
+            <table class="table text-lg-center">
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Last Update</th>
+                    
+                </tr>
+                <tr *ngFor="let getResult of getActor">
+                    <td>
+                        {{getResult.actorId}}
+                    </td>
+                    <td>
+                        {{getResult.firstName}}
+                    </td>
+                    <td>
+                        {{getResult.lastName}}
+                    </td>
+                    <td>
+                        {{getResult.lastUpdate}}
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-3">
+
+        </div>
+</div>
