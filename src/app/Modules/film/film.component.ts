@@ -6,6 +6,7 @@ import { SearchFilm } from '../model/searchFilm';
 import { SentActor } from '../model/sentActor';
 import { SentFilm } from '../model/sentFilm';
 import { FilmandactorService } from '../service/filmandactor.service';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-film',
@@ -68,6 +69,18 @@ export class FilmComponent implements OnInit {
       this.check = true;
       console.log(res.data);      
     })
+  }
+
+  saveExcel(){
+    this.searchFilm = this.filmForm.value;
+    console.log(this.searchFilm);
+
+    this.filmandactorService.searchFilmExportExcel(this.searchFilm).subscribe(res => {
+      const blob = new Blob([res],{type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      FileSaver.saveAs(blob,'FilmExportExcel')
+      console.log(res.data);
+    })
+
   }
 
   back(){

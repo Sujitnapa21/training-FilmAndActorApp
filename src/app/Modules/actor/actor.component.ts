@@ -5,6 +5,7 @@ import { FilmModel } from '../model/filmModel';
 import { SearchActor } from '../model/searchActor';
 import { SentActor } from '../model/sentActor';
 import { SentFilm } from '../model/sentFilm';
+import * as FileSaver from 'file-saver';
 
 import { FilmandactorService } from '../service/filmandactor.service';
 
@@ -63,6 +64,19 @@ export class ActorComponent implements OnInit {
       this.check = true;
       console.log(res.data);      
     })
+  }
+
+  saveExcel(){
+    this.searchActor = this.actorForm.value;
+    console.log(this.searchActor);
+
+    this.filmandactorService.searchActorExportExcel(this.searchActor).subscribe(res => {
+      const blob = new Blob([res],{type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      FileSaver.saveAs(blob,'ActorListExcel')
+      console.log(res.data);
+    })
+
+    
   }
 
   back(){

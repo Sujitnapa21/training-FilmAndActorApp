@@ -65,4 +65,45 @@ export class FilmandactorService {
       tap(_=> console.log('Get Film By Actor Success'))
     );
   }
+
+  filmExportExcel():Observable<any>{
+    const exportHttpOption = {
+      responseType: 'blob' as 'json'
+    };
+    const url = environment.module.filmExportExcel;
+    return this.http.get<ResponseModel<Array<FilmModel>>>(url,this.httpOption).pipe(
+      tap(_=> console.log('Get Films Export Excel Success'))      
+    );
+  }
+
+  actorExportExcel():Observable<any>{
+    const exportHttpOption = {
+      responseType: 'blob' as 'json'
+    };
+    const url = environment.module.actorExportExcel;
+    return this.http.get<ResponseModel<Array<ActorModel>>>(url,this.httpOption).pipe(
+      tap(_=> console.log('Get Actors Export Excel Success'))      
+    );
+  }
+
+  searchActorExportExcel(searchActor:SearchActor):Observable<any>{
+    const exportHttpOption = {
+      responseType: 'blob' as 'json'
+    };
+    const url = environment.module.searchActorExportExcel;
+    return this.http.post<any>(url, searchActor, exportHttpOption).pipe(
+      tap(_=> console.log('Get Search Actor Export Excel  Success'))
+    );
+  }
+
+  searchFilmExportExcel(searchFilm:SearchFilm):Observable<any>{
+    const exportHttpOption = {
+      responseType: 'blob' as 'json'
+    };
+    const url = environment.module.searchFilmExportExcel;
+    return this.http.post<any>(url, searchFilm, exportHttpOption).pipe(
+      tap(_=> console.log('Get Search Film Export Excel  Success'))      
+    );
+  }
+
 }

@@ -10,7 +10,13 @@ export const environment = {
     getSearchFilm: 'http://localhost:8080/api/getSearchFilm',
     getSearchActor: 'http://localhost:8080/api/getSearchActor',
     getActorInFilm: 'http://localhost:8080/api/getActorInFilm',
-    getFilmByActor: 'http://localhost:8080/api/getFilmByActor'
+    getFilmByActor: 'http://localhost:8080/api/getFilmByActor',
+    filmExportExcel: 'http://localhost:8080/api/excel/film',
+    actorExportExcel: 'http://localhost:8080/api/excel/actor',
+    searchFilmExportExcel: 'http://localhost:8080/api/excel/searchFilm',
+    searchActorExportExcel: 'http://localhost:8080/api/excel/searchActor'
+
+   
   }
 };
 
